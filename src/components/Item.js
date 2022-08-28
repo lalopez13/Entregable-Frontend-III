@@ -11,7 +11,7 @@
 import { useState } from "react";
 
 export default function Item(props) {
-
+  
   const [stock, setStock] = useState(props.stock);
   const [desactivar, setdesactivar] = useState({
     estaDesactivado: false,
@@ -23,11 +23,9 @@ export default function Item(props) {
     {
       props.addItem();
     }
+    setStock(stock - 1);
 
-    if (stock > 1) {
-      setStock(stock - 1);
-    } else if (stock === 1) {
-      setStock(stock - 1);
+    if (stock === 1) {
       setdesactivar({ estaDesactivado: true, texto: "Sin stock" });
     }
   }

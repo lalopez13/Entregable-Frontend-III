@@ -9,9 +9,8 @@ import Item from "./Item";
 // PROPS: Listado recibe el método para aumentar el estado de App y se lo pasa a cada uno de sus hijos.
 
 export default function Listado(props) {
- 
   const productos = data;
- 
+
   return (
     <div className="container">
       {productos.map((producto) => (
