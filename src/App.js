@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import Cabecera from './components/Cabecera'
-import Listado from './components/Listado'
+import { useState } from "react";
+import Cabecera from "./components/Cabecera";
+import Listado from "./components/Listado";
 
 // El componente App es el padre de:
 // - Cabecera
@@ -10,18 +10,16 @@ import Listado from './components/Listado'
 // PROPS: App deberá pasar por props lo necesario a sus componenetes internos.
 
 function App() {
+  const [items, setItems] = useState(0);
 
-const [items,setItems]= useState(0);
-
-function anadirItems(){
-  console.log('anadiendo items carrito compras')
-  setItems(items + 1)
-}
+  function anadirItems() {
+    setItems(items + 1);
+  }
 
   return (
     <div className="App">
-      <Cabecera cantProductos={items}/>
-      <Listado addItem={anadirItems}/>
+      <Cabecera cantProductos={items} />
+      <Listado addItem={anadirItems} />
     </div>
   );
 }
