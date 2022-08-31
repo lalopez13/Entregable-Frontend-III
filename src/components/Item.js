@@ -11,23 +11,23 @@
 import { useState } from "react";
 
 export default function Item(props) {
-  
   const [stock, setStock] = useState(props.stock);
-  const [desactivar, setdesactivar] = useState({
+
+  // Opcion de manejar el boton a traves del uso de un estado
+  /* const [desactivar, setdesactivar] = useState({
     estaDesactivado: false,
     texto: "Comprar",
-  });
+  }); */
 
   function comprar() {
     // Esta funcion siempre se va a ejecutar cuando se compre un item
-    {
-      props.addItem();
-    }
+    props.addItem();
     setStock(stock - 1);
 
-    if (stock === 1) {
-      setdesactivar({ estaDesactivado: true, texto: "Sin stock" });
-    }
+    // Uso de condicional para manejar el estado del boton
+    /* if (stock === 1) {
+       setdesactivar({ estaDesactivado: true, texto: "Sin stock" });
+     }*/
   }
 
   return (
@@ -35,9 +35,16 @@ export default function Item(props) {
       <h3>{props.nombre}</h3>
       <p>{props.descripcion}</p>
       <h5>En stock:{stock >= 1 ? stock : <span>agotado</span>}</h5>
-      <button onClick={comprar} disabled={desactivar.estaDesactivado}>
-        {desactivar.texto}
-      </button>
+      
+      {stock >= 1 ? (
+        <button onClick={comprar}>Comprar</button>
+      ) : (
+        <button disabled={true}>Sin stock</button>
+      )}
+
+      {/* Renderizar el boton de acuerdo al estado */}
+      {/* <button onClick={comprar} disabled={desactivar.estaDesactivado}> {desactivar.texto}  </button> */}
+
     </div>
   );
 }
